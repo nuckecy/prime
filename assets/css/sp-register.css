@@ -1,0 +1,12 @@
+/* Register Custom Style */
+.surround_form
+{
+  border-top:3px solid #cdcdcd;
+  border-bottom:3px solid #cdcdcd;
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+.pround-10 { padding: 8rem 2rem 1rem 7rem}
+.pround-3 { padding: 0rem 5rem 0rem 0rem}
+
+.move-left { flex: 0 0 43%; max-width: 43%;}
+/* ------------ ----------- */

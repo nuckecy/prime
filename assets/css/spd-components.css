@@ -1,0 +1,175 @@
+/* --- Footer --- */
+footer {
+    background: #64003f;
+    border-top:1px solid #e0e0e0;
+    height: 54px;
+}
+.sticky-footer
+{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  color: #fff !important;
+}
+
+.push { height: 54px;}
+.pfooter {font-size: 12px; padding-top: 18px;}
+/* ============================== */
+
+
+/* ============================== GENERAL =============================== */
+
+.round-pink { border: 1px solid #bd88a9; border-radius: 5px; padding: 35px;}
+.round-grey { border: 1px solid #e5e5e5; border-radius: 5px; padding: 20px;}
+.round-summary {border: 1px solid #e5e5e5; border-radius: 5px; padding: 1px 10px; margin: 10px 0px 0px 0px;}
+.round-sum-hl {border: 1px solid #bd88a9; border-radius: 5px; padding: 5px 15px 5px 10px;  margin: 0px 5px 20px 5px;}
+.round-message {border-left: 2px solid #64003f; background: #eee; font-size: 12px; font-weight: 500; padding: 3px 0px 3px 10px; margin-left: 5px;}
+
+.round-shade {border: 1px solid #cfcfcf; background: #f2f2f2; border-radius: 5px; padding: 15px;  margin: 0px 0px 20px 0px; font-size:12px; }
+.round-specta {border: 1px solid #64003f; background: #a00065; color:#ffffff; border-radius: 5px; padding: 15px;  margin: 0px 0px 20px 0px; font-size:12px; }
+.round-warning {background: #ff8686; color:#000000; border-radius: 5px; padding: 15px;  margin: 0px 0px 20px 0px; font-size:12px; }
+
+/* ============== TABLE FLEX STYLE ============= */
+.table-contain { display: flex; font-size: 12px;}
+.table-left, .table-right {flex:1; padding: 5px;}
+.table-left p, .table-right p{font-weight: 600; font-size: 14px;}
+.table-left label {margin-left:20px;}
+
+.contain-box { display: flex; flex-direction: column; font-size: 12px;}
+.contain-top, .contain-bottom { flex:1; }
+
+.t-contain, .t-main {display: flex;  flex-direction: row; flex-wrap: wrap; justify-content: space-between;}
+.t-contain {font-size: 12px;}
+.t-main p{font-weight: 400;}
+
+.t-left {background:#e8e8e8; margin-bottom: 30px; font-weight: 600;}
+
+.t-left div {border-bottom:1px solid #dadada; padding: 5px 5px; }
+.t-right div {border-bottom:1px solid #dadada; padding: 5px 5px 5px 25px; text-align: right;font-weight: 600;}
+
+/* ===================== TC ===================== */
+.t-contain-tc, .t-main-tc {display: flex;  flex-direction: row; flex-wrap: wrap; justify-content:center;}
+.t-contain-tc {font-size: 16px;}
+.t-main-tc p{font-weight: 400;}
+
+.t-left-tc {background:#e8e8e8; margin-bottom: 30px; font-weight: 600;}
+
+.t-left-tc div {border-bottom:1px solid #dadada; padding: 5px 10px; }
+.t-right-tc div {border-bottom:1px solid #dadada; padding: 5px 5px 5px 25px; text-align: right;font-weight: 600;}
+/* ============================================= */
+.round-summary td, .round-grey td {font-size: 12px;}
+.round-summary form p.small{font-size: 14px;}
+.round-sum-hl form p {font-size: 12px;}
+.round-sum-hl p {font-size: 12px; font-weight: 200; font-weight: 600; color: #65003f;}
+.round-sum-hl .table-left {text-align: left;}
+.round-sum-hl .table-right {text-align: right;}
+.round-sum-hl h4 {font-weight: 400;}
+.tc {font-size: 12px;}
+.round-text { font-size: 16px;}
+
+.error-msg { color:#ff8686; }
+
+.checked {padding: 10px 0px 5px 0px; text-align: center;}
+
+/* .table-left  {background: #adadad;}
+.table-right {background: #f4f4f4;} */
+
+/* Force table to not be like tables anymore */
+table, thead, tbody, th, td, tr {
+    display: block;
+}
+
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+tr {
+    margin: 0 0 1rem 0;
+}
+
+tr:nth-child(odd) {
+    background: #fdfdfd;
+}
+
+td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding: 5px;
+    text-align: right;
+    line-height: 16px;
+    font-size: 14px;
+}
+
+td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 0;
+    left: 0px;
+    width: 43%;
+    padding:5px 0 5px 10px;
+    white-space: nowrap;
+    color: #000;
+    font-weight: 500;
+    border-bottom:1px solid #dadada;
+}
+/* ==================  ================== */
+.output {
+  margin: 0 auto;
+  padding: .1em 1em 1.1em 1em;
+}
+.colors {
+  padding: 2em;
+  color: #fff;
+  /* display: none; */
+}
+.card1 {
+  color: #ffffff;
+  background: #ad161f;
+}
+.card2 {
+  color: #000000;
+  background: #DAA520;
+}
+.card3 {
+  color: #000000;
+  background: #DCDCDC;
+}
+.card4 {
+  color: #fff;
+  background: #808080;
+}
+.card5 {
+  color: #fff;
+  background: #262626;
+}
+/* ======================================== */
+
+/* ============== ================ ============= */
+
+@media (min-width: 320px) and (max-width: 480px)
+{
+    .table-contain
+    {
+        display:flex;
+        flex-direction:column;
+    }
+
+    td { font-size: 11px;}
+    td:before { width: 42%; }
+
+    .round-sum-hl .table-left {text-align: center;}
+    .round-sum-hl .table-right {text-align: center;}
+    .round-summary, .round-pink, .round-grey{ padding: 10px; margin: 10px 0px; }
+
+    .t-contain {margin-bottom: 20px;}
+    .t-left div {padding: 5px; }
+    .t-right div {padding: 5px;}
+}

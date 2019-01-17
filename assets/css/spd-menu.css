@@ -1,0 +1,62 @@
+a.menu-link {
+  	    float: right;
+		    display: inline-block;
+        width:100%
+		    /* padding: 1em; */
+		}
+		nav[role=navigation] {
+			clear: both;
+			-webkit-transition: all 0.3s ease-out;
+			-moz-transition: all 0.3s ease-out;
+			-ms-transition: all 0.3s ease-out;
+			-o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		}
+		.js nav[role=navigation] {
+			overflow: hidden;
+			max-height: 0;
+		}
+		nav[role=navigation].active {
+			max-height: 50em;
+		}
+		nav[role=navigation] ul {
+			margin: 0;
+			padding: 0;
+		}
+		nav[role=navigation] li a {
+			display: block;
+			padding: 3px 5px 5px 20px;
+			border-bottom: 1px solid #f9e0f0;
+      color: #64003f;
+      text-decoration: none;
+		}
+
+    nav[role=navigation] li a:hover {
+      background: #a00065;
+      color:#ffffff;
+		}
+
+
+		@media screen and (min-width: 48.25em) {
+			a.menu-link {
+			   display: none;
+			}
+
+			.js nav[role=navigation] {
+				max-height: none;
+			}
+			nav[role=navigation] ul {
+				margin: 10px 0 10px -0.25em;
+				border: 0;
+			}
+
+			nav[role=navigation]  li {
+        display: inline-block;
+        margin: 0px 0px 0px 4px;
+        width: 99%;
+        font-size: 13px;
+			}
+			nav[role=navigation] li a {
+				border: 0;
+			}
+		}

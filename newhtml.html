@@ -1,0 +1,177 @@
+<div class="holder">
+  <div class="row">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 mb-4">
+          <h3>Investment Summary</h3>
+        </div>
+        <div class="col-md-10 offset-md-1 mb-4">
+          <h5 class="mb-1 text-center">Application Summary</h5>
+          <div class="round-grey">
+            <form autocomplete="off">
+              <style>
+                @media (min-width: 320px) and (max-width: 480px)
+                    {
+                      .m-pos {position: absolute; top: 510px;}
+                    }
+                    .table1 td { background: #e8e8e8; text-align: left;border-bottom: 1px solid #dadada; font-weight: bold;}
+              </style>
+              <div class="alert alert-danger checked" id="errorMsg" *ngIf="ErrorMsg" role="alert">
+                <h4 class="alert-heading"><i class="fa fa-times-circle" aria-hidden="true"></i>Accept Terms and
+                  Conditions to continue</h4>
+              </div>
+              <div class="alert alert-danger checked" id="otpErrorMsg" *ngIf="OtpErrorMsg" role="alert">
+                <h4 class="alert-heading"><i class="fa fa-times-circle" aria-hidden="true"></i>Valid OTP is required</h4>
+              </div><br>
+              <div class="alert alert-success checked" id="finalizeSuccessMsg" *ngIf="finalizeSuccessMsg" role="alert">
+                <h4 class="alert-heading">
+                  <i class="fa fa-check-circle" aria-hidden="true"></i> Application was completed and saved
+                  successfully</h4>
+              </div>
+              <div class="alert alert-danger checked" id="finalizeErrorMsg" *ngIf="finalizeErrorMsg" role="alert">
+                <h4 class="alert-heading">
+                  <i class="fa fa-check-circle" aria-hidden="true"></i> An error was encountered while finalizing the
+                  application</h4>
+              </div>
+              <br>
+              <div class="font-weight-light round-shade" style="margin-top: -35px">You are eligible for a <b>Short Term (Cash Backed)</b>
+                loan of <b>{{transactionData.loan.amount | currency:'₦':true:'2.2-4'}}</b> under the terms and
+                conditions stated below. Please view your transaction summary below.
+              </div>
+              <div >
+              <div class="t-main">
+                <div class="t1">
+                  <p>Investment Summary</p>
+                </div>
+                <div class="t2 m-pos">
+                  <p>Loan Summary</p>
+                </div>
+              </div>
+              <div class="t-main">
+
+                <div class="t-contain t1">
+                  <div class="t-left">
+                    <div>Amount (Principal)</div>
+                    <div>Tenor</div>
+                    <div>Interest Rate</div>
+                    <div>Effective Date</div>
+                    <div>Maturity Date</div>
+                    <div>Interest Amount</div>
+                    <div>Withholding Tax (10 %)</div>
+                    <div>Net Interest Amount</div>
+                    <div>Maturity Value</div>
+                  </div>
+
+                  <div class="t-right">
+                    <div>{{transactionData.investment.amount | currency:currencySymbol:'symbol':'1.2-2'}}</div>
+                    <div>
+                      {{(transactionData.investment.tenorInDays < 30) ? (transactionData.investment.tenorInDays | number: '1.0-0' ) : (transactionData.investment.tenorInDays/30 | number: '1.0-0' ) }} {{ transactionData.investment.tenorInDays%30 === 7 || transactionData.investment.tenorInDays%30 === 14 || transactionData.investment.tenorInDays%30 === 21?'days':''}} {{ transactionData.investment.tenorInDays%30 === 5 || transactionData.investment.tenorInDays%30 === 0 && transactionData.investment.tenorInDays !== 30 ?'Months':''}} {{transactionData.investment.tenorInDays%30 === 0  && transactionData.investment.tenorInDays === 30 ?'Month':''}}
+                    </div> 
+                    <div>{{transactionData.investment.interestPercentage | number: '1.2-2'}} %</div>
+                    <div>{{investmentEffectiveDate}}</div>
+                    <div>{{investmentMaturityDate}}</div>
+                    <div>{{transactionData.investment.interestAmount | currency:currencySymbol:'symbol':'1.2-2'}}</div>
+                    <div>{{transactionData.investment.withholdingTax | currency:currencySymbol:'symbol':'1.2-2'}}</div>
+                    <div>{{transactionData.investment.netInterestAmount | currency:currencySymbol:'symbol':'1.2-2'}}</div>
+                    <div class="font-weight-light"><b>{{transactionData.investment.amountAtMaturity |
+                        currency:currencySymbol:'symbol':'1.2-2'}}</b></div>
+                  </div>
+                </div>
+
+                <div class="t-contain t2">
+                  <div class="t-left">
+                    <div>Amount (Principal)</div>
+                    <div>Tenor</div>
+                    <div>{{transactionData.loan.installmentType==0?'Monthly ':'Single '}}Repayment
+                      {{transactionData.loan.installmentType==0 ?' Day':' Date'}}</div>
+                    <div>Interest Rate</div>
+                    <div>Effective Date</div>
+                    <div>Maturity Date</div>
+                    <div>Processing Fee ({{transactionData.processingFeePercentage | number: '1.1-1'}}%)</div>
+                    <div>Commitment Fee ({{transactionData.managementFeePercentage | number: '1.1-1'}}%)</div>
+                    <div>Repayment Amount</div>
+                  </div>
+
+                  <div class="t-right">
+                    <div>{{transactionData.loan.amount | currency:'₦':'symbol':'1.2-2'}}</div>
+                    <div>
+                      {{(transactionData.loan.tenorInDays < 30) ? (transactionData.loan.tenorInDays | number: '1.0-0' )
+                        : (transactionData.loan.tenorInDays/30 | number: '1.0-0' ) }}
+                        {{transactionData.loan.tenorInDays%30 === 7 || transactionData.loan.tenorInDays%30 === 14 || transactionData.loan.tenorInDays%30 === 21 ?'days':''}}
+                        {{(transactionData.loan.tenorInDays%30 === 0 || transactionData.loan.tenorInDays%30 === 5) && (transactionData.loan.tenorInDays !== 30) ?'Months':''}}
+                        {{ transactionData.loan.tenorInDays%30 === 0 && transactionData.loan.tenorInDays === 30  ?'Month':''}}
+                        </div> <div>{{transactionData.loan.installmentType === 0 ?'Monthly on day '+
+                        transactionData.loan.installmentDayOfMonth:loanMaturityDate}}</div>
+                    <div>{{transactionData.loan.interestPercentage | number: '1.2-2'}} %</div>
+                    <div>{{loanEffectiveDate}}</div>
+                    <div>{{loanMaturityDate}}</div>
+                    <div>{{ (transactionData.loan.amount * (transactionData.processingFeePercentage/100) ) |
+                      currency:'₦':'symbol':'1.2-2'}}</div>
+                    <div>{{ ((transactionData.managementFeePercentage/100) * transactionData.loan.amount) |
+                      currency:'₦':'symbol':'1.2-2'}}</div>
+                    <div class="font-weight-light"><b>{{transactionData.loan.repaymentAmount |
+                        currency:'₦':'symbol':'1.2-2'}}</b></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+              <hr class="mt-0">
+              <div class="round-sum-hl">
+                <div class="table-contain">
+                  <div class="table-left">
+                    <p class="small mb-0">{{appSession.user.company.name}}</p>
+                    <h5 class="mb-0 font-weight-light">{{transactionData.investment.investmentAccount}}</h5>
+                    <p class="small mb-0">FUNDING ACCOUNT</p>
+                  </div>
+                  <div class="table-right">
+                    <p class="small mb-0">{{appSession.user.company.name}}</p>
+                    <h5 class="mb-0 font-weight-light">{{transactionData.loan.disbursementAccount}}</h5>
+                    <p class="small mb-0">DISBURSEMENT ACCOUNT</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-0">
+              <div class="table-contain">
+                <div class="table-left">
+                  <input class="mb-0" type="checkbox" [ngClass]="{'is-invalid': submitted && !acceptTerms}" (change)="chkTerms($event)">
+                  <label>I agree to the Terms & Condition</label>
+                  <div class="text-justify py-2 pr-3 tc">By ticking the checkbox, you agree to the Terms and Conditions for this transaction as detailed in the following documents.<br><br> Please click any of the agreements below to read our terms and conditions.<br>
+                    <div class="ml-2">
+                        <a class="font-weight-bold" href=""><i class="fa fa-caret-right" aria-hidden="true"></i> Credit Facility Agreement</a><br>
+                        <a class="font-weight-bold" href=""><i class="fa fa-caret-right" aria-hidden="true"></i> Cash Collateral Agreement Form</a><br>
+                        <a class="font-weight-bold" href=""><i class="fa fa-caret-right" aria-hidden="true"></i> Offer Letter</a><br>
+                        <a class="font-weight-bold" href=""><i class="fa fa-caret-right" aria-hidden="true"></i> Investment Letter</a>
+                    </div>
+                  </div>
+                  <div *ngIf="submitted && !acceptTerms" class="invalid-feedback">
+                    <div>You must agree to the stated Terms and Conditions</div>
+                  </div>
+                </div>
+                <div class="table-right" *ngIf="showOtpDiv">
+
+                  <label>One-Time Password Confirmation</label>
+                  <div class="text-justify py-2 pr-3 tc"><b>Please enter the OTP sent to your mobile or email and
+                      Submit.</b><br>
+                    <input (keypress)="validateNumber($event)" [(ngModel)]="otp" name="one-time-password" autocomplete="off" type="password"></div>
+                  <div *ngIf="submitted && (otp===undefined || otp==='')" class="invalid-feedback">
+                    <div> OTP is required</div>
+                  </div>
+                </div>
+              </div>
+              <button role="button" [disabled]="submitBtnDisabled" (click)="finalizeTransaction()" aria-labelledby="Submit" *ngIf="showSubmitBtn" class="btn btn-block btn-sm btn-specta my-1 small mb-3"
+                type="submit">Submit Application</button>
+              <button role="button" [disabled]="finalizeBtnDisabled" aria-labelledby="button" *ngIf="!showSubmitBtn"
+                (click)="validateFinalize()" class="btn btn-block btn-sm btn-specta my-1 small mb-3" type="button">Finalize
+                Application</button>
+              <button role="button" aria-labelledby="Cancel" (click)="onCancel()" class="btn btn-block btn-sm btn-light my-1 small mb-3"
+                type="button">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
